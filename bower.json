@@ -1,0 +1,11 @@
+{
+  "name": "friendmap-app",
+  "private": true,
+  "dependencies": {
+    "Framework7": "framework7#^1.4.2"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.5.3"
+  }
+}

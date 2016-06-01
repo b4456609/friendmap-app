@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <title>Friendmap</title>
+
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <!-- Place favicon.ico in the root directory -->
+
+  <!-- build:css styles/vendor.css -->
+  <!-- bower:css -->
+  <link rel="stylesheet" href="../../bower_components/Framework7/dist/css/framework7.ios.css">
+  <link rel="stylesheet" href="../../bower_components/Framework7/dist/css/framework7.ios.colors.css">
+  <!-- endbower -->
+  <!-- endbuild -->
+
+  <!-- build:css styles/main.css -->
+  <link rel="stylesheet" href="styles/main.css">
+  <!-- endbuild -->
+
+  <link href="http://fonts.googleapis.com/css?family=Roboto:400,300,500,700" rel="stylesheet" type="text/css">
+
+
+</head>
+
+<body>
+  <!-- Status bar overlay for full screen mode (PhoneGap) -->
+  <div class="statusbar-overlay"></div>
+  <!-- Panels overlay-->
+  <div class="panel-overlay"></div>
+  <!-- Left panel with reveal effect-->
+  <div class="panel panel-left panel-reveal">
+    <div class="content-block">
+      <p>Left panel content goes here</p>
+    </div>
+  </div>
+  <!-- Views -->
+  <div class="views">
+    <!-- Your main view, should have "view-main" class -->
+    <div class="view view-main">
+      <!-- Top Navbar-->
+      <div class="navbar">
+        <div class="navbar-inner">
+          <!-- We need cool sliding animation on title element, so we have additional "sliding" class -->
+          <div class="center sliding">FriendMap</div>
+          <div class="right">
+            <!-- 
+                Right link contains only icon - additional "icon-only" class
+                Additional "open-panel" class tells app to open panel when we click on this link
+              -->
+            <a href="#" class="link icon-only open-panel"><i class="icon icon-bars"></i></a>
+          </div>
+        </div>
+      </div>
+      <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
+      <div class="pages navbar-through toolbar-through">
+        <!-- Page, "data-page" contains page name -->
+        <div data-page="index" class="page">
+          <!-- Scrollable page content -->
+          <div class="page-content">
+            <div class="content-block-title">歡迎使用Friendmap</div>
+            <div class="card demo-card-header-pic">
+              <div style="background-image:url(images/giphy.gif)" valign="bottom" class="card-header color-white no-border">等待邀請</div>
+              <div class="card-content">
+                <div class="card-content-inner">使用者建立群組後，將可以邀請您加入群組。</div>
+              </div>
+            </div>
+            <div class="card demo-card-header-pic">
+              <div style="background-image:url(images/aftereffects-create-first-project-cc_1408x172.jpg)" valign="bottom" class="card-header color-white no-border">建立群組</div>
+ 
+              <!--<div class="card-header">建立群組</div>-->
+              <div class="card-content">
+                <div class="card-content-inner">建立群組後，可以加入其他使用者到群組內。</div>
+              </div>
+              <div class="card-footer">
+                <a href="#" class="link">建立</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- build:js scripts/vendor.js -->
+  <!-- bower:js -->
+  <script type="text/javascript" src="../../bower_components/Framework7/dist/js/framework7.js"></script>
+  <!-- endbower -->
+  <!-- endbuild -->
+
+  <!-- build:js scripts/main.js -->
+  <script src="scripts/main.js"></script>
+  <!-- endbuild -->
+</body>
+
+</html>
