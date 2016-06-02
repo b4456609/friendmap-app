@@ -13,8 +13,8 @@
 
   <!-- build:css styles/vendor.css -->
   <!-- bower:css -->
-  <link rel="stylesheet" href="../../bower_components/Framework7/dist/css/framework7.ios.css">
-  <link rel="stylesheet" href="../../bower_components/Framework7/dist/css/framework7.ios.colors.css">
+  <link rel="stylesheet" href="../bower_components/Framework7/dist/css/framework7.ios.css">
+  <link rel="stylesheet" href="../bower_components/Framework7/dist/css/framework7.ios.colors.css">
   <!-- endbower -->
   <!-- endbuild -->
 
@@ -33,9 +33,36 @@
   <!-- Panels overlay-->
   <div class="panel-overlay"></div>
   <!-- Left panel with reveal effect-->
-  <div class="panel panel-left panel-reveal">
+  <div class="panel panel-left panel-reveal layout-white">
     <div class="content-block">
-      <p>Left panel content goes here</p>
+      <div class="content-block-title">FriendMap</div>
+      <div class="content-block">
+        <p>Hello, <span id="user-name"></span></p>
+      </div>
+      <div class="list-block">
+        <ul>
+          <li>
+            <a href="forms.html" class="item-link close-panel">
+              <div class="item-content">
+                <div class="item-media"><i class="icon icon-f7"></i></div>
+                <div class="item-inner">
+                  <div class="item-title">Forms</div>
+                </div>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="list-view.html" class="item-link close-panel">
+              <div class="item-content">
+                <div class="item-media"><i class="icon icon-f7"></i></div>
+                <div class="item-inner">
+                  <div class="item-title">List View</div>
+                </div>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
   <!-- Views -->
@@ -71,7 +98,7 @@
             </div>
             <div class="card demo-card-header-pic">
               <div style="background-image:url(images/aftereffects-create-first-project-cc_1408x172.jpg)" valign="bottom" class="card-header color-white no-border">建立群組</div>
- 
+
               <!--<div class="card-header">建立群組</div>-->
               <div class="card-content">
                 <div class="card-content-inner">建立群組後，可以加入其他使用者到群組內。</div>
@@ -84,18 +111,62 @@
         </div>
       </div>
     </div>
+    <!--login popup-->
+    <div class="login-screen">
+      <div class="view">
+        <div class="page">
+          <div class="page-content login-screen-content">
+            <div class="login-screen-title">My App</div>
+            <form>
+              <div class="list-block">
+                <ul>
+                  <li class="item-content">
+                    <div class="item-inner">
+                      <div class="item-title label">Username</div>
+                      <div class="item-input">
+                        <input type="text" name="username" placeholder="Your username">
+                      </div>
+                    </div>
+                  </li>
+                  <li class="item-content">
+                    <div class="item-inner">
+                      <div class="item-title label">Password</div>
+                      <div class="item-input">
+                        <input type="password" name="password" placeholder="Your password">
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div class="list-block">
+                <ul>
+                  <li><a href="#" class="item-link list-button">Sign In</a></li>
+                </ul>
+                <div class="list-block-label">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                  <p><a href="#" class="close-login-screen">Close Login Screen</a></p>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--end login popup-->
   </div>
-
 
   <!-- build:js scripts/vendor.js -->
   <!-- bower:js -->
-  <script type="text/javascript" src="../../bower_components/Framework7/dist/js/framework7.js"></script>
+  <script type="text/javascript" src="../bower_components/Framework7/dist/js/framework7.js"></script>
   <!-- endbower -->
   <!-- endbuild -->
 
+
   <!-- build:js scripts/main.js -->
+  <script src="scripts/user.js"></script>
   <script src="scripts/main.js"></script>
   <!-- endbuild -->
+
 </body>
 
 </html>
