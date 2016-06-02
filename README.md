@@ -21,7 +21,7 @@ bower insatll
 ## 開發
 這個會開啟http://localhost:9000/網頁，修改檔案會自動refresh頁面。
 ```
-gulp server
+gulp serve
 ```
 ### IDE
 建議使用[Visual Studio Code](https://www.visualstudio.com/en-us/products/code-vs.aspx)開發
