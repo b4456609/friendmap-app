@@ -3,31 +3,31 @@
 * Class: Map
 */
 
-function Map(){
-    //Constructor
-
-    this.map = null;
-
+//Constructor
+function Map() {
+  this.map = null;
 }
 
-
-/**
-* @return {null}
-*/
-Map.prototype.updateUserLocation = function(){
-    //TODO: Implement Me 
-
+// 初始畫地圖
+Map.prototype.initmap = function () {
+  this.map = L.mapbox.map('map', 'mapbox.streets')
+    .setView([40, -74.50], 9);
 };
 
 
-/**
-* @return {null}
-*/
-Map.prototype.updateUserStatus = function(){
-    //TODO: Implement Me 
+
+Map.prototype.updateUserLocation = function () {
+  //TODO: Implement Me
 
 };
 
 
 
-module.exports = {Map:Map};
+Map.prototype.updateUserStatus = function () {
+  //TODO: Implement Me
+
+};
+
+
+
+var map = new Map();

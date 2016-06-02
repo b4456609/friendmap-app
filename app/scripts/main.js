@@ -39,3 +39,6 @@ myApp.onPageInit('index', function (page) {
     console.log('index init');
     myApp.loginScreen();
 })
+
+// map token
+L.mapbox.accessToken = 'pk.eyJ1IjoiYjQ0NTY2MDkiLCJhIjoiY2lveWVqZTRpMDF3dnVjbTh5N2V1aXBkeiJ9.0IYd1v5vsG3gqNb3wLYuIw';
