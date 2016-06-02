@@ -24,8 +24,13 @@ Group.prototype.acceptGroup = function(){
 function Member(){
     //Constructor
 
-    this.member = null;
-
+    this.id = null;
+    this.name = null;
+    this.status = null;
+    this.location = {
+      lon: null,
+      lat: null,
+    };
 }
 
 
