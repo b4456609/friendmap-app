@@ -41,20 +41,19 @@ function onError(evt) {
   console.log('ERROR: ' + evt.data);
 }
 
-ServerClient.prototype.addUser = function (message) {
+ServerClient.prototype.addUser = function (name, id) {
   this.doSend({
     "type": "addUser",
-    "name": "王建民",
-    "id": "2134548458"
+    "name": name,
+    "id": id
   });
 }
 
-ServerClient.prototype.createGroup = function (message) {
+ServerClient.prototype.createGroup = function (name, id) {
   this.doSend({
-    "type": "addUser",
-    "name": "棒球群組",
-    "id": "1464767827233",
-    "member": ["2134548458"]
+    "type": "createGroup",
+    "name": name,
+    "id": id
   });
 }
 
