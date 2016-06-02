@@ -2,70 +2,50 @@
 
 <!-- Top Navbar-->
 
-<div data-page="group" class="page with-subnavbar">
-    <div class="navbar">
-        <div class="navbar-inner">
-            <div class="left"><a href="index.html" class="back link icon-only"><i class="icon icon-back"></i></a></div>
-            <div class="center">管理群組</div>
-            <div class="right"><a href="#" class="link open-panel icon-only"><i class="icon icon-bars"></i></a></div>
-            <div class="subnavbar">
-                <!-- Buttons row as tabs controller in Subnavbar-->
-                <div class="buttons-row">
-                    <!-- Link to 1st tab, active -->
-                    <a href="#tab1" class="button active tab-link">群組資訊</a>
-                    <!-- Link to 2nd tab -->
-                    <a href="#tab2" class="button tab-link">新增人員</a>
-                </div>
+<div class="navbar">
+  <div class="navbar-inner">
+    <div class="left"><a href="index.html" class="back link icon-only"><i class="icon icon-back"></i></a></div>
+    <div class="center">管理群組</div>
+    <div class="right"><a href="#" class="link open-panel icon-only"><i class="icon icon-bars"></i></a></div>
+  </div>
+</div>
+<div class="pages navbar-through">
+  <div data-page="group" class="page">
+    <div class="page-content">
+      <div class="list-block">
+        <ul>
+          <li class="item-content">
+            <div class="item-title label">新增朋友</div>
+            <div class="item-input">
+              <input type="text" placeholder="Facebook名稱" id="autocomplete-dropdown-expand"></div>
+          </li>
+        </ul>
+      </div>
+      <div class="content-block-title">成員名單</div>
+      <div class="list-block">
+        <ul>
+          <li class="item-content">
+            <div class="item-inner">
+              <div class="item-title">王建民</div>
             </div>
-        </div>
+          </li>
+          <li class="item-content">
+            <div class="item-inner">
+              <div class="item-title">陳偉殷</div>
+            </div>
+          </li>
+          <li class="item-content">
+            <div class="item-inner">
+              <div class="item-title">陳偉殷</div>
+            </div>
+          </li>
+          <li class="item-content">
+            <div class="item-inner">
+              <div class="item-title">陳偉殷</div>
+            </div>
+          </li>
+        </ul>
+      </div>
     </div>
-    <div class="tabs-swipeable-wrap">
-        <!-- Tabs, tabs wrapper -->
-        <div class="tabs">
-            <!-- Tab 1, active by default -->
-            <div id="tab1" class="page-content tab active">
-                <div class="content-block-title">群組人員</div>
-                <div class="list-block">
-                    <ul>
-                        <li class="item-content">
-                            <div class="item-inner">
-                                <div class="item-title">王建民</div>
-                            </div>
-                        </li>
-                        <li class="item-content">
-                            <div class="item-inner">
-                                <div class="item-title">陳偉殷</div>
-                            </div>
-                        </li>
-                        <li class="item-content">
-                            <div class="item-inner">
-                                <div class="item-title">陳偉殷</div>
-                            </div>
-                        </li>
-                        <li class="item-content">
-                            <div class="item-inner">
-                                <div class="item-title">陳偉殷</div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <!-- Tab 2 -->
-            <div id="tab2" class="page-content tab">
-                <div class="list-block">
-                    <ul>
-                        <li>
-                            <a href="#" id="autocomplete-standalone" class="item-link item-content autocomplete-opener">
-                                <input type="hidden">
-                                <div class="item-inner">
-                                    <div class="item-title">Favorite Fruite</div>
-                                    <div class="item-after"></div>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
+  </div>
 </div>
