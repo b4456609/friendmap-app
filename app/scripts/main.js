@@ -31,14 +31,5 @@ var mainView = myApp.addView('.view-main', {
     dynamicNavbar: true
 });
 
-// Now we need to run the code that will be executed only for About page.
-
-// Option 1. Using page callback for page (for "about" page in this case) (recommended way):
-myApp.onPageInit('index', function (page) {
-    // Do something here for "about" page
-    console.log('index init');
-    myApp.loginScreen();
-})
-
 // map token
 L.mapbox.accessToken = 'pk.eyJ1IjoiYjQ0NTY2MDkiLCJhIjoiY2lveWVqZTRpMDF3dnVjbTh5N2V1aXBkeiJ9.0IYd1v5vsG3gqNb3wLYuIw';
