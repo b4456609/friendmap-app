@@ -3,7 +3,7 @@ A WBSE Final project
 
 ## 需求軟體
 - [Git](https://git-scm.com/)
-- [GitHub Desktop](https://desktop.github.com/)(可選）
+- [GitHub Desktop](https://desktop.github.com/)(可選)
 - [Node.js](https://nodejs.org/en/) 4.0 or newer
 
 下載安裝完Nodejs後，安裝npm套件
