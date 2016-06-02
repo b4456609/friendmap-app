@@ -7,7 +7,7 @@ A WBSE Final project
 - [Node.js](https://nodejs.org/en/) 4.0 or newer
 
 下載安裝完Nodejs後，安裝npm套件
-- 安裝gulp `npm install -g gulp`
+- 安裝gulp `npm install -g gulp-cli`
 - 安裝bower `npm install -g bower`
 
 ## 下載專案
