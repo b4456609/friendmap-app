@@ -40,7 +40,7 @@ function Member(){
 
 Member.prototype.updateUserStatus = function(){
     //TODO: Implement Me
-
+	var a;
 };
 
 
