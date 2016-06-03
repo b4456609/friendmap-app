@@ -25,3 +25,19 @@ myApp.onPageInit('group', function (page) {
     }
   });
 });
+
+function onAddPeopleSuccess(name) {
+  myApp.addNotification({
+    hold: 2000,
+    title: '加入成功',
+    message: name + ' 成為新的成員'
+  });
+}
+
+function onAddPeopleFail() {
+  myApp.addNotification({
+    hold: 2000,
+    title: '加入失敗',
+    message: '請稍重試'
+  });
+}
