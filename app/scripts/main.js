@@ -19,6 +19,8 @@ var myApp = new Framework7({
   onPageInit: function (app, page) {
     //設定sidebar使用者的名稱
     document.getElementById('user-name').innerHTML = user.name;
+
+    serverClient.init();
   }
 });
 

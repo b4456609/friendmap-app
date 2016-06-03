@@ -13,7 +13,7 @@ ServerClient.prototype.init = function (params) {
 }
 
 ServerClient.prototype.doSend = function (message) {
-  writeToScreen("SENT: " + message);
+  console.log("SENT: " + message);
   this.websocket.send(message);
 }
 
@@ -54,6 +54,56 @@ ServerClient.prototype.createGroup = function (name, id) {
     "type": "createGroup",
     "name": name,
     "id": id
+  });
+}
+
+ServerClient.prototype.searchPeople = function (name) {
+  this.doSend({
+    "type": "searchPeople",
+    "search": name,
+  });
+}
+
+ServerClient.prototype.addUser2Group = function (userId, groupId) {
+  this.doSend({
+    "type": "addUser2Group",
+    "userId": userId,
+    "groupId": groupId
+  });
+}
+
+ServerClient.prototype.leaveGroup = function (userId, groupId) {
+  this.doSend({
+    "type": "leaveGroup",
+    "userId": userId,
+    "groupId": groupId
+  });
+}
+
+ServerClient.prototype.updateLocation = function (lon, lat) {
+  this.doSend({
+    "type": "updateLocation",
+    "userId": user.id,
+    "lon": lon,
+    "lat": lat
+  });
+}
+
+ServerClient.prototype.updateAcceleration = function (x, y, z) {
+  this.doSend({
+    "type": "updateAcceleration",
+    "userId": user.id,
+    "x": x,
+    "y": y,
+    "z": z
+  });
+}
+
+ServerClient.prototype.updateStatus = function (status) {
+  this.doSend({
+    "type": "updateStatus",
+    "userId": user.id,
+    "status": status
   });
 }
 
