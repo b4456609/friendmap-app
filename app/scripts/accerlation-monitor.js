@@ -9,6 +9,7 @@ function AccerlationMonitor(){
     this.x = null;
     this.y = null;
     this.z = null;
+    this.timestamp = null;
 
 }
 
@@ -16,8 +17,8 @@ function AccerlationMonitor(){
 /**
 * @return {null}
 */
-AccerlationMonitor.prototype.getAccerlationMonitor = function(){
-    //TODO: Implement Me 
+AccerlationMonitor.prototype.startMonitor = function(){
+    //TODO: Implement Me
 
 };
 
