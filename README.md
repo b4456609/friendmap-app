@@ -15,7 +15,7 @@ A WBSE Final project
 2. 到專案目錄下開啟命令列，輸入以下指令安裝專案的依賴
 ```
 npm install
-bower insatll
+bower install
 ```
 
 ## 開發
