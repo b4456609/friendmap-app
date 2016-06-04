@@ -10,7 +10,6 @@ var myApp = new Framework7({
     myApp.hideIndicator();
   },
   onPageBeforeInit: function (app, page) {
-    serverClient.init();
     console.log('init onPageInit', user);
     if (user.id == '') {
       console.log('user not login');
@@ -22,6 +21,9 @@ var myApp = new Framework7({
     document.getElementById('user-name').innerHTML = user.name;
   }
 });
+
+
+    serverClient.init();
 
 // We need to use custom DOM library, let's save it to $$ variable:
 var $$ = Dom7;

@@ -36,6 +36,7 @@ function onMessage(evt) {
     case 'CreateGroupResult':
       if (data.status == 'success') {
         onGroupSuccess();
+        serverClient.searchPeople();
       }
       else {
         onGroupfail();
@@ -43,6 +44,11 @@ function onMessage(evt) {
       break;
     case 'searchPeopleResult':
       searchResult = data.search;
+      break;
+    case 'addUser2Group':
+      group.setMember(data.user);
+      if(data.status == 'success'){
+      }
       break;
     default:
       console.log('ServerClient not match message type');

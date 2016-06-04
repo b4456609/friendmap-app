@@ -30,6 +30,12 @@ myApp.onPageInit('group', function (page) {
     },
     onChange: function (autocomplete, value) {
       console.log('autocomplete select', value);
+      for (var i = 0; i < searchResult.length; i++) {
+        if (value === searchResult[i].name){
+          serverClient.addUser2Group(searchResult[i].id, group.id);
+          return;
+        }
+      }
     }
   });
 });
@@ -42,6 +48,15 @@ function onAddPeopleSuccess(name) {
     title: '加入成功',
     message: name + ' 成為新的成員'
   });
+
+  if(mainView.activePage.name == 'group'){
+    var result = '';
+    for(var i in group.members){
+      var template = '<li class="item-content"><div class="item-inner"><div class="item-title">' +group.members[i].name +'</div></div></li>';
+      result += template;
+    }
+    $$('#members').html(result);
+  }
 }
 
 function onAddPeopleFail() {

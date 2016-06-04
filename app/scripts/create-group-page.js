@@ -1,6 +1,6 @@
 myApp.onPageInit('create-group', function (page) {
 
-  $$(document).on('click', 'a', function (e) {
+  $$(document).on('click', '#submit', function (e) {
     var name = $$('#group-name').val();
     console.log('送出', name);
     if(name === ''){

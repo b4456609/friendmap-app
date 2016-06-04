@@ -6,27 +6,37 @@ function Group(){
 
 }
 
-Group.prototype.setMember = function(){
-    //TODO: Implement Me
-
-};
-
 Group.prototype.createGroup = function(name){
     this.id = new Date().getTime();
     this.name = name;
-
 };
+
+Group.prototype.setMember = function(users){
+  // console.log(users);
+  for(var i in users){
+    var j = 0;
+    for(;j < this.members.length;j++){
+      if(users[i].id == this.members[j].id)
+        break;
+    }
+    // console.log(j);
+    if(j == this.members.length){
+      this.members.push(new Member(users[i].id, users[i].name));
+      onAddPeopleSuccess(users[i].name);
+    }
+  }
+}
 
 Group.prototype.acceptGroup = function(){
     //TODO: Implement Me
 
 };
 
-function Member(){
+function Member(id, name){
     //Constructor
 
-    this.id = null;
-    this.name = null;
+    this.id = id;
+    this.name = name;
     this.status = {
       status: null,
       timestamp: null
