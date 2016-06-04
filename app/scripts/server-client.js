@@ -5,11 +5,13 @@ function ServerClient() {
 }
 
 ServerClient.prototype.init = function (params) {
-  this.websocket = new WebSocket(this.url);
-  this.websocket.onopen = function (evt) { onOpen(evt) };
-  this.websocket.onclose = function (evt) { onClose(evt); };
-  this.websocket.onmessage = function (evt) { onMessage(evt) };
-  this.websocket.onerror = function (evt) { onError(evt) };
+  if (this.wobsocket === null) {
+    this.websocket = new WebSocket(this.url);
+    this.websocket.onopen = function (evt) { onOpen(evt) };
+    this.websocket.onclose = function (evt) { onClose(evt); };
+    this.websocket.onmessage = function (evt) { onMessage(evt) };
+    this.websocket.onerror = function (evt) { onError(evt) };
+  }
 }
 
 ServerClient.prototype.doSend = function (message) {
@@ -35,9 +37,12 @@ function onMessage(evt) {
       if (data.status == 'success') {
         onGroupSuccess();
       }
-      else{
+      else {
         onGroupfail();
       }
+      break;
+    case 'searchPeopleResult':
+      searchResult = data.search;
       break;
     default:
       console.log('ServerClient not match message type');
@@ -65,10 +70,9 @@ ServerClient.prototype.createGroup = function (name, id) {
   });
 }
 
-ServerClient.prototype.searchPeople = function (name) {
+ServerClient.prototype.searchPeople = function () {
   this.doSend({
-    "type": "searchPeople",
-    "search": name,
+    "type": "searchPeople"
   });
 }
 
