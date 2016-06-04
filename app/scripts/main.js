@@ -20,7 +20,7 @@ var myApp = new Framework7({
     //設定sidebar使用者的名稱
     document.getElementById('user-name').innerHTML = user.name;
 
-    serverClient.init();
+    // serverClient.init();
   }
 });
 
