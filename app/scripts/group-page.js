@@ -30,7 +30,6 @@ myApp.onPageInit('group', function (page) {
     },
     onChange: function (autocomplete, value) {
       console.log('autocomplete select', value);
-      searchPeople()
     }
   });
 });
