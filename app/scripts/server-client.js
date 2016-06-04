@@ -7,14 +7,15 @@ function ServerClient() {
 ServerClient.prototype.init = function (params) {
   this.websocket = new WebSocket(this.url);
   this.websocket.onopen = function (evt) { onOpen(evt) };
-  this.websocket.onclose = function (evt) { onClose(evt) };
+  this.websocket.onclose = function (evt) { onClose(evt); };
   this.websocket.onmessage = function (evt) { onMessage(evt) };
   this.websocket.onerror = function (evt) { onError(evt) };
 }
 
 ServerClient.prototype.doSend = function (message) {
-  console.log("SENT: " + message);
-  this.websocket.send(message);
+  var str = JSON.stringify(message);
+  console.log("SENT: " + str);
+  this.websocket.send(str);
 }
 
 function onOpen(evt) {
@@ -23,14 +24,20 @@ function onOpen(evt) {
 
 function onClose(evt) {
   console.log("DISCONNECTED");
+  serverClient.wobsocket = new WebSocket(serverClient.url);
 }
 
 function onMessage(evt) {
   console.log('RESPONSE: ' + evt.data);
   var data = JSON.parse(evt.data);
   switch (data.type) {
-    case 'createGrouprResult':
-      group.successCreateGroup();
+    case 'CreateGroupResult':
+      if (data.status == 'success') {
+        onGroupSuccess();
+      }
+      else{
+        onGroupfail();
+      }
       break;
     default:
       console.log('ServerClient not match message type');
@@ -53,6 +60,7 @@ ServerClient.prototype.createGroup = function (name, id) {
   this.doSend({
     "type": "createGroup",
     "name": name,
+    "userId": user.id,
     "id": id
   });
 }

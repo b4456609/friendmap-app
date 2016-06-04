@@ -1,8 +1,8 @@
 function Group(){
     //Constructor
-
-    this.groupId = null;
+    this.id = null;
     this.members = [];
+    this.name = null;
 
 }
 
@@ -11,8 +11,9 @@ Group.prototype.setMember = function(){
 
 };
 
-Group.prototype.createGroup = function(){
-    //TODO: Implement Me
+Group.prototype.createGroup = function(name){
+    this.id = new Date().getTime();
+    this.name = name;
 
 };
 
