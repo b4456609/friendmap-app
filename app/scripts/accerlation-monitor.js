@@ -19,9 +19,18 @@ function AccerlationMonitor(){
 */
 AccerlationMonitor.prototype.startMonitor = function(){
     //TODO: Implement Me
-
+    window.addEventListener('devicemotion', function(event) {
+        console.log(event.acceleration.x + ' m/s2');
+    });
 };
 
+/**
+* @return {null}
+*/
+AccerlationMonitor.prototype.stopMonitor = function(){
+    //TODO: Implement Me
+    
+};
 
 
 var accerlationMonitor = new AccerlationMonitor();
