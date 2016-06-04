@@ -3,13 +3,16 @@ myApp.onPageInit('group', function (page) {
   var autocompleteDropdownExpand = myApp.autocomplete({
     input: '#autocomplete-dropdown-expand',
     openIn: 'dropdown',
+    preloader: true, //enable preloader
     expandInput: true, // expand input
     source: function (autocomplete, query, render) {
       serverClient.searchPeople();
 
       var results = [];
       if (query.length === 0) {
-        render(searchResult);
+        render(searchResult.map(function (item) {
+          return item.name
+        }));
         return;
       }
       // Hide Preoloader
