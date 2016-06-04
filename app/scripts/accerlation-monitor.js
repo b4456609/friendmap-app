@@ -29,7 +29,7 @@ AccerlationMonitor.prototype.startMonitor = function(){
 */
 AccerlationMonitor.prototype.stopMonitor = function(){
     //TODO: Implement Me
-    
+    var s;
 };
 
 
