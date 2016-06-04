@@ -88,12 +88,13 @@ ServerClient.prototype.leaveGroup = function (userId, groupId) {
   });
 }
 
-ServerClient.prototype.updateLocation = function (lon, lat) {
+ServerClient.prototype.updateLocation = function (lon, lat, timestamp) {
   this.doSend({
     "type": "updateLocation",
     "userId": user.id,
     "lon": lon,
-    "lat": lat
+    "lat": lat,
+    "timestamp": timestamp
   });
 }
 

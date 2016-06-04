@@ -5,7 +5,7 @@
 
 function GPSMonitor(){
     //Constructor
-
+    this.timestamp = null;
     this.lat = null;
     this.lon = null;
 
@@ -15,8 +15,8 @@ function GPSMonitor(){
 /**
 * @return {null}
 */
-GPSMonitor.prototype.getLocation = function(){
-    //TODO: Implement Me 
+GPSMonitor.prototype.startMonitor = function(){
+    //TODO: Implement Me
 
 };
 

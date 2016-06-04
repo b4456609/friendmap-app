@@ -27,10 +27,14 @@ function Member(){
 
     this.id = null;
     this.name = null;
-    this.status = null;
+    this.status = {
+      status: null,
+      timestamp: null
+    };
     this.location = {
       lon: null,
       lat: null,
+      timestamp: null
     };
 }
 
