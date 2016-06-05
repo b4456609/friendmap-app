@@ -7,9 +7,9 @@
 function Map() {
   this.map = null;
   this.label = null;
-  
   this.geojson = null;
   this.myLayer = null;
+  
 }
 
 // 初始畫地圖
@@ -24,13 +24,15 @@ Map.prototype.initmap = function () {
     })
   }).addTo(this.map);*/
   //---------------------------------------測試GeoJson Marker---------------------------------------
+  
   this.myLayer = L.mapbox.featureLayer().addTo(this.map);
-  this.geojson = [
+  
+    this.geojson = [
     {
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [121.780102,25.150911]
+        "coordinates": [121.780060,25.150056]
       },
       "properties": {
         "icon": {
@@ -49,18 +51,49 @@ Map.prototype.initmap = function () {
     marker.setIcon(L.icon(feature.properties.icon));
   });
   this.myLayer.setGeoJSON(this.geojson);
-  //this.myLayer.setGeoJSON(this.testGeojson);
+  
+
+  
 };
 
 
 
 Map.prototype.updateUserLocation = function () {
-   
+    latitude-=0.001;
+  this.map.removeLayer(this.myLayer);
+  this.myLayer = L.mapbox.featureLayer().addTo(this.map);
+  this.geojson = [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [longitude,latitude]
+      },
+      "properties": {
+        "icon": {
+          "iconUrl": "https://www.mapbox.com/mapbox.js/assets/images/astronaut1.png",
+          "iconSize": [50, 50], // size of the icon
+          "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
+          "popupAnchor": [0, -25], // point from which the popup should open relative to the iconAnchor
+          "className": "dot"
+        }
+      }
+    }
+  ];
+  this.myLayer.on('layeradd', function (e) {
+    var marker = e.layer,
+      feature = marker.feature;
+    marker.setIcon(L.icon(feature.properties.icon));
+  });
+  this.myLayer.setGeoJSON(this.geojson);
+
 };
 
 Map.prototype.updateUserStatus = function () {
-  //TODO: Implement Me
+    
 };
 
+var longitude = 121.780060;
+var latitude = 25.150056;
 var map = new Map();
 

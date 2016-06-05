@@ -1,9 +1,8 @@
 function Group(){
     //Constructor
-
     this.groupId = null;
     this.members = [];
-
+    this.members[0].setUserStatus(1,1);
 }
 
 Group.prototype.setMember = function(){
@@ -38,15 +37,18 @@ function Member(){
 }
 
 
-Member.prototype.updateUserStatus = function(){
-    //TODO: Implement Me
-
+Member.prototype.setUserStatus = function(statusID,time){
+   this.status.status = statusID;
+   this.status.timestamp = time;
+   map.updateUserStatus();
 };
 
 
-Member.prototype.updateUserLocation = function(){
-    //TODO: Implement Me
-
+Member.prototype.setUserLocation = function(longitude,latitude,time){
+   this.location.lon = longitude;
+   this.location.lat = latitude;
+   this.location.timestamp = time;
+   map.updateUserLocation();
 };
 
 var group = new Group();
