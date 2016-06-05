@@ -21,8 +21,6 @@ function makeFakeDataToServer() {
 
 function test() {
   user.login();
-  makeFakeDataToServer();
   group.createGroup('name');
   serverClient.createGroup(group.name, group.id);
-  serverClient.addUser2Group(user1.id, group.id);
 }

@@ -33,7 +33,7 @@ function onMessage(evt) {
   console.log('RESPONSE: ' + evt.data);
   var data = JSON.parse(evt.data);
   switch (data.type) {
-    case 'CreateGroupResult':
+    case 'createGroupResult':
       if (data.status == 'success') {
         onGroupSuccess();
         serverClient.searchPeople();
