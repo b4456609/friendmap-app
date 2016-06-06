@@ -12,7 +12,7 @@ User.prototype.setUserFromFB = function () {
     localStorage.setItem('id', self.id);
     localStorage.setItem('name', self.name);
     setSidebarName();
-    // serverClient.addUser(this.name, this.id);
+    serverClient.addUser(self.name, self.id);
     myApp.closeModal();
   });
 }

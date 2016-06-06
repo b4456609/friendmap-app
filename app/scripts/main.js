@@ -19,16 +19,16 @@ var myApp = new Framework7({
 });
 
 window.onload = function () {
-  // if (localStorage.getItem("id") === null) {
-  //   console.log('user not login');
-  //   app.loginScreen();
-  // }
-  // else{
-  //   user.id = localStorage.getItem("id");
-  //   user.name = localStorage.getItem("name");
-  //   setSidebarName();
-  //   // serverClient.addUser(user.name, user.id);
-  // }
+  if (localStorage.getItem("id") === null) {
+    console.log('user not login');
+    myApp.loginScreen();
+  }
+  else{
+    user.id = localStorage.getItem("id");
+    user.name = localStorage.getItem("name");
+    setSidebarName();
+    serverClient.addUser(user.name, user.id);
+  }
 }
 
 function setSidebarName(){
@@ -37,7 +37,7 @@ function setSidebarName(){
 }
 
 
-// serverClient.init();
+serverClient.init();
 
 // We need to use custom DOM library, let's save it to $$ variable:
 var $$ = Dom7;
