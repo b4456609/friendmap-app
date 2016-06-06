@@ -7,9 +7,9 @@
 function Map() {
   this.map = null;
   this.label = null;
-  this.geojson = null;
+  this.geojson = [];
   this.myLayer = null;
-  
+
 }
 
 // 初始畫地圖
@@ -26,52 +26,22 @@ Map.prototype.initmap = function () {
   //---------------------------------------測試GeoJson Marker---------------------------------------
   
   this.myLayer = L.mapbox.featureLayer().addTo(this.map);
-  
-    this.geojson = [
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [121.780060,25.150056]
-      },
-      "properties": {
-        "icon": {
-          "iconUrl": "https://www.mapbox.com/mapbox.js/assets/images/astronaut1.png",
-          "iconSize": [50, 50], // size of the icon
-          "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
-          "popupAnchor": [0, -25], // point from which the popup should open relative to the iconAnchor
-          "className": "dot"
-        }
-      }
-    }
-  ];
-  this.myLayer.on('layeradd', function (e) {
-    var marker = e.layer,
-      feature = marker.feature;
-    marker.setIcon(L.icon(feature.properties.icon));
-  });
-  this.myLayer.setGeoJSON(this.geojson);
-  
-
-  
 };
 
-
-
-Map.prototype.updateUserLocation = function () {
-    latitude-=0.001;
-  this.map.removeLayer(this.myLayer);
+//更新所有成員在地圖上的位置
+Map.prototype.updateUserLocation = function (lon,lat) {
+this.map.removeLayer(this.myLayer);
   this.myLayer = L.mapbox.featureLayer().addTo(this.map);
-  this.geojson = [
-    {
+  for(var x =0;x<group.members.length;x++){
+    var marker = {
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [longitude,latitude]
+        "coordinates": [group.members[x].location.lon, group.members[x].location.lat]
       },
       "properties": {
         "icon": {
-          "iconUrl": "https://www.mapbox.com/mapbox.js/assets/images/astronaut1.png",
+          "iconUrl": "images/testchicken.png",
           "iconSize": [50, 50], // size of the icon
           "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
           "popupAnchor": [0, -25], // point from which the popup should open relative to the iconAnchor
@@ -79,21 +49,21 @@ Map.prototype.updateUserLocation = function () {
         }
       }
     }
-  ];
+    this.geojson.push(marker);
+  }
+
   this.myLayer.on('layeradd', function (e) {
     var marker = e.layer,
       feature = marker.feature;
     marker.setIcon(L.icon(feature.properties.icon));
   });
   this.myLayer.setGeoJSON(this.geojson);
-
 };
 
 Map.prototype.updateUserStatus = function () {
-    
+
 };
 
-var longitude = 121.780060;
-var latitude = 25.150056;
+
 var map = new Map();
 
