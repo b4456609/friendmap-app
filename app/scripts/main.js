@@ -19,17 +19,18 @@ var myApp = new Framework7({
   }
 });
 
+//使用者登入
 window.onload = function () {
-  if (localStorage.getItem("id") === null) {
-    console.log('user not login');
-    myApp.loginScreen();
-  }
-  else {
-    user.id = localStorage.getItem("id");
-    user.name = localStorage.getItem("name");
-    setSidebarName();
-    serverClient.addUser(user.name, user.id);
-  }
+  // if (localStorage.getItem("id") === null) {
+  //   console.log('user not login');
+  //   myApp.loginScreen();
+  // }
+  // else {
+  //   user.id = localStorage.getItem("id");
+  //   user.name = localStorage.getItem("name");
+  //   setSidebarName();
+  //   serverClient.addUser(user.name, user.id);
+  // }
 }
 
 function setSidebarName() {
@@ -37,8 +38,8 @@ function setSidebarName() {
   document.getElementById('user-name').innerHTML = user.name;
 }
 
-
-serverClient.init();
+//初始畫server連線
+// serverClient.init();
 
 // We need to use custom DOM library, let's save it to $$ variable:
 var $$ = Dom7;

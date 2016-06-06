@@ -17,7 +17,8 @@ ServerClient.prototype.init = function (params) {
 ServerClient.prototype.doSend = function (message) {
   var str = JSON.stringify(message);
   console.log("SENT: " + str);
-  this.websocket.send(str);
+  //開發功能是測試用
+  // this.websocket.send(str);
 }
 
 function onOpen(evt) {
