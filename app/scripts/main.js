@@ -11,7 +11,7 @@ var myApp = new Framework7({
   },
   onPageBeforeInit: function (app, page) {
     console.log('init onPageInit', user);
-    if (user.id == '') {
+    if (localStorage.getItem("id") === null) {
       console.log('user not login');
       app.loginScreen();
     }
@@ -22,11 +22,36 @@ var myApp = new Framework7({
   }
 });
 
+window.onload = function () {
+  if (localStorage.getItem("id") === null) {
+    console.log('user not login');
+    app.loginScreen();
+  }
+  else{
+    user.id = localStorage.getItem("id");
+    user.name = localStorage.getItem("name");
+    setSidebarName();
+    // serverClient.addUser(user.name, user.id);
+  }
+}
 
-    serverClient.init();
+function setSidebarName(){
+    //設定sidebar使用者的名稱
+    document.getElementById('user-name').innerHTML = user.name;
+}
+
+
+// serverClient.init();
 
 // We need to use custom DOM library, let's save it to $$ variable:
 var $$ = Dom7;
+
+$$('.login-screen').on('opened', function () {
+  console.log('open login');
+  $$('#fb-login').on('click', function (e) {
+    user.login();
+  });
+});
 
 // Add view
 var mainView = myApp.addView('.view-main', {
