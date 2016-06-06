@@ -6,6 +6,15 @@ function Group() {
 
 }
 
+Group.prototype.isValidGroup = function () {
+  if(this.id === null){
+    return false;
+  }
+  else{
+    return true;
+  }
+};
+
 Group.prototype.createGroup = function (name) {
   this.id = new Date().getTime();
   this.name = name;

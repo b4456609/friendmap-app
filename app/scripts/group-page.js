@@ -1,4 +1,5 @@
 myApp.onPageInit('group', function (page) {
+  validGroupOrReturnToIndex('group');
   // Fruits data demo array
   var autocompleteDropdownExpand = myApp.autocomplete({
     input: '#autocomplete-dropdown-expand',
@@ -39,6 +40,7 @@ myApp.onPageInit('group', function (page) {
     }
   });
   updateMemberList();
+  $$('#leave-group').on('click',leaveGroup);
 });
 
 var searchResult = [];
@@ -71,6 +73,8 @@ function onAddPeopleFail() {
   });
 }
 
-function leaveGroup(){
-
+function leaveGroup() {
+  myApp.confirm('確定要離開群組嗎?', function () {
+    serverClient.leaveGroup(user.id, group.id);
+  });
 }

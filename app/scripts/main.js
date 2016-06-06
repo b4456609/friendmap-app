@@ -1,5 +1,6 @@
 // Initialize app and store it to myApp variable for futher access to its methods
 var myApp = new Framework7({
+  modalTitle: 'FriendMap',
   // If it is webapp, we can enable hash navigation:
   pushState: true,
   // Hide and show indicator during ajax requests
@@ -23,7 +24,7 @@ window.onload = function () {
     console.log('user not login');
     myApp.loginScreen();
   }
-  else{
+  else {
     user.id = localStorage.getItem("id");
     user.name = localStorage.getItem("name");
     setSidebarName();
@@ -31,9 +32,9 @@ window.onload = function () {
   }
 }
 
-function setSidebarName(){
-    //設定sidebar使用者的名稱
-    document.getElementById('user-name').innerHTML = user.name;
+function setSidebarName() {
+  //設定sidebar使用者的名稱
+  document.getElementById('user-name').innerHTML = user.name;
 }
 
 
@@ -57,3 +58,14 @@ var mainView = myApp.addView('.view-main', {
 
 // map token
 L.mapbox.accessToken = 'pk.eyJ1IjoiYjQ0NTY2MDkiLCJhIjoiY2lveWVqZTRpMDF3dnVjbTh5N2V1aXBkeiJ9.0IYd1v5vsG3gqNb3wLYuIw';
+
+// 如果使用者沒有建立群組或加入群組不能打開group頁面
+function validGroupOrReturnToIndex() {
+  if (!group.isValidGroup()) {
+    if (mainView.activePage.name == 'group') {
+      myApp.alert('請等待邀請或建立新的群組', function () {
+        mainView.router.loadPage('index.html');
+      });
+    }
+  }
+}
