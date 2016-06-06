@@ -11,10 +11,6 @@ var myApp = new Framework7({
   },
   onPageBeforeInit: function (app, page) {
     console.log('init onPageInit', user);
-    if (localStorage.getItem("id") === null) {
-      console.log('user not login');
-      app.loginScreen();
-    }
   },
   onPageInit: function (app, page) {
     //設定sidebar使用者的名稱
@@ -23,16 +19,16 @@ var myApp = new Framework7({
 });
 
 window.onload = function () {
-  if (localStorage.getItem("id") === null) {
-    console.log('user not login');
-    app.loginScreen();
-  }
-  else{
-    user.id = localStorage.getItem("id");
-    user.name = localStorage.getItem("name");
-    setSidebarName();
-    // serverClient.addUser(user.name, user.id);
-  }
+  // if (localStorage.getItem("id") === null) {
+  //   console.log('user not login');
+  //   app.loginScreen();
+  // }
+  // else{
+  //   user.id = localStorage.getItem("id");
+  //   user.name = localStorage.getItem("name");
+  //   setSidebarName();
+  //   // serverClient.addUser(user.name, user.id);
+  // }
 }
 
 function setSidebarName(){

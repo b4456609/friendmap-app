@@ -1,8 +1,6 @@
 function User() {
   this.name = '訪客' + new Date().getTime();
-  // this.id = "45616516";
-  this.id = '';
-  // this.id = '' + new Date().getTime();
+  this.id = '' + new Date().getTime();
   this.accessToken = null;
 }
 
@@ -13,7 +11,8 @@ User.prototype.setUserFromFB = function () {
     self.id = response.id;
     localStorage.setItem('id', self.id);
     localStorage.setItem('name', self.name);
-  // serverClient.addUser(this.name, this.id);
+    setSidebarName();
+    // serverClient.addUser(this.name, this.id);
     myApp.closeModal();
   });
 }
