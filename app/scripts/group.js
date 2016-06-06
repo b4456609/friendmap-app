@@ -7,10 +7,10 @@ function Group() {
 }
 
 Group.prototype.isValidGroup = function () {
-  if(this.id === null){
+  if (this.id === null) {
     return false;
   }
-  else{
+  else {
     return true;
   }
 };
@@ -40,6 +40,16 @@ Group.prototype.setMember = function (users) {
   }
 }
 
+Group.prototype.updateSelfStatus = function (status) {
+  // console.log(users);
+  for (var i in this.members) {
+    if (this.members[i].id === user.id) {
+      this.members[i].updateUserStatus(status);
+      break;
+    }
+  }
+}
+
 Group.prototype.acceptGroup = function () {
   //TODO: Implement Me
 
@@ -62,9 +72,10 @@ function Member(id, name) {
 }
 
 
-Member.prototype.updateUserStatus = function () {
-  //TODO: Implement Me
-
+Member.prototype.updateUserStatus = function (status) {
+  this.status.status = status;
+  this.status.timestamp = new Date().getTime();
+  console.log(this.id, this.status);
 };
 
 
