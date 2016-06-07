@@ -11,15 +11,20 @@
     <div class="page-content">
 <div id='map' style="width:100%; height:500px"></div>
 <form>
-  <a href="javascript:void(0)" onclick=" map.drawAllMember()">drawAllMember </a><br>
-  <a href="javascript:void(0)" onclick=" group.testResetPosition(1,group.members[1].location.lon-0.01,group.members[1].location.lat)">member1Position </a><br>
-  <a href="javascript:void(0)" onclick=" group.testResetStatus(1,1)">dmember1Happy </a><br>
-  <a href="javascript:void(0)" onclick=" group.testResetStatus(1,2)">dmember1Warning </a><br>
-  <a href="javascript:void(0)" onclick=" group.testResetStatus(1,3)">dmember1GG </a><br>
-  <a href="javascript:void(0)" onclick=" group.testResetPosition(2,group.members[2].location.lon,group.members[2].location.lat-0.01)">member2Position </a><br>
-  <a href="javascript:void(0)" onclick=" group.testResetStatus(2,1)">dmember2Happy </a><br>
-  <a href="javascript:void(0)" onclick=" group.testResetStatus(2,2)">dmember2Warning </a><br>
-  <a href="javascript:void(0)" onclick=" group.testResetStatus(2,3)">dmember2GG </a><br>
+  <a href="javascript:void(0)" onclick="  group.setMember(1,'rdrrmew','happy',121.779872,25.150964,1)">AddMember1 </a><br>
+  <a href="javascript:void(0)" onclick=" group.setMember(2,'afasd','gg',121.782002,25.150212,1)">AddMember2 </a><br>
+  <a href="javascript:void(0)" onclick=" group.setMember(3,'uglydog','warning',121.779369,25.150169,1)">AddMember3 </a><br>
+  <a href="javascript:void(0)" onclick=" group.setMember(1234,'kappa','happy',121.777202,25.150674,1)">AddMember4 </a><br>
+
+  <a href="javascript:void(0)" onclick=" group.updateUserLocation(1234,121.779872,25.150964)">member1Up </a><br>
+  <a href="javascript:void(0)" onclick=" group.updateUserLocation(1234,121.782002,25.150212)">member1Down </a><br>
+  <a href="javascript:void(0)" onclick=" group.updateUserLocation(1234,121.779369,25.150169)">member1Left </a><br>
+  <a href="javascript:void(0)" onclick=" group.updateUserLocation(1234,121.777202,25.150674)">member1Right </a><br>
+  <a href="javascript:void(0)" onclick=" group.updateUserStatus(1234,'happy')">member1Happy </a><br>
+  <a href="javascript:void(0)" onclick=" group.updateUserStatus(1234,'warning')">member1Warning </a><br>
+  <a href="javascript:void(0)" onclick=" group.updateUserStatus(1234,'gg')">member1GG </a><br>
+  
+  
 </form>
 
 </div>

@@ -57,7 +57,8 @@ Map.prototype.drawAllMember = function () {
           "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
           "popupAnchor": [0, -25], // point from which the popup should open relative to the iconAnchor
           "className": "dot"
-        }
+        },
+        "description": group.members[x].name + ""
       }
     }
     this.geojson.push(marker);
