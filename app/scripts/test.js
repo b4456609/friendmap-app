@@ -26,6 +26,7 @@ function test() {
 }
 
 function memberTest(){
+    
   var members = [];
   var timestamp = new Date().getTime();
 
@@ -36,23 +37,18 @@ function memberTest(){
 
 
   var member2 = new Member(timestamp+2+'', "afasd");
-  member2.setUserLocation(121.779872,25.150964,timestamp)
+  member2.setUserLocation(121.782104,25.150158,timestamp)
   member2.setUserStatus("gg",timestamp);
   members.push(member2);
 
-
   var member3 = new Member(timestamp+3+'', "uglydog");
-  member3.setUserLocation(121.779872,25.150964,timestamp)
+  member3.setUserLocation(121.779100,25.149410,timestamp)
   member3.setUserStatus("warning",timestamp);
   members.push(member3);
 
 
-  // var member4 = new Member(timestamp+4+'', "kappa");
-  // member4.setUserLocation(121.779872,25.150964,timestamp)
-  // member4.setUserStatus("happy",timestamp);
-  // members.push(member4);
-
   console.log(members);
 
   group.setMember(members);
+
 }

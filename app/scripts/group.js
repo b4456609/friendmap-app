@@ -56,25 +56,19 @@ Group.prototype.acceptGroup = function () {
   //TODO: Implement Me
 }
 
+//-----------------------------------------------------------------------------
 Group.prototype.testResetPosition = function (memberID, lon, lat) {
   this.members[memberID].setUserLocation(lon, lat, 1);
-  map.updateUserLocation(memberID);
+  map.drawAllMembers();
 };
 
 Group.prototype.testResetStatus = function (memberID, status) {
-  if (status == 1) {
-    this.members[memberID].setUserStatus("happy", 1);
-  } else if (status == 2) {
-    this.members[memberID].setUserStatus("warning", 1);
-  } else if (status == 3) {
-    this.members[memberID].setUserStatus("gg", 1);
-  }
-  map.updateUserStatus(memberID);
+    this.members[memberID].setUserStatus(status, 1);
+  map.drawAllMembers();
 };
 
 function Member(id, name) {
   //Constructor
-
   this.groupMemberID = null;
   this.id = id;
   this.name = name;
@@ -87,18 +81,41 @@ function Member(id, name) {
     lat: null,
     timestamp: null
   };
+
+  this.marker = {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [0, 0]
+    },
+    "properties": {
+      "icon": {
+        "iconUrl": "images/happy.png",
+        "iconSize": [50, 50], // size of the icon
+        "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
+        "popupAnchor": [0, -25], // point from which the popup should open relative to the iconAnchor
+        "className": "dot"
+      }
+    }
+  }
+
 }
 
 Member.prototype.setUserLocation = function (longitude, latitude, time) {
+
   this.location.lon = longitude;
   this.location.lat = latitude;
   this.location.timestamp = time;
+  this.marker.geometry.coordinates = [longitude,latitude];
+
 }
 
 
-Member.prototype.setUserStatus = function (statusID, time) {
-  this.status.status = statusID;
+Member.prototype.setUserStatus = function (status, time) {
+  this.status.status = status;
   this.status.timestamp = time;
+  this.marker.properties.icon.iconUrl = "images/" + status + ".png";
+
 };
 
 var group = new Group();
