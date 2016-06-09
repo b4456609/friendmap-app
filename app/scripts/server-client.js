@@ -14,7 +14,7 @@ ServerClient.prototype.init = function (params) {
 
 ServerClient.prototype.doSend = function (message) {
   console.log("SENT: " + message);
-  this.websocket.send(message);
+ // this.websocket.send(message);
 }
 
 function onOpen(evt) {

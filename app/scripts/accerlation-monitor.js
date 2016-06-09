@@ -2,7 +2,7 @@
 * Generated On: 2016-6-2
 * Class: AccerlationMonitor
 */
-
+var device_acc=null;
 function AccerlationMonitor(){
     //Constructor
 
@@ -13,14 +13,18 @@ function AccerlationMonitor(){
 
 }
 function AccelerationDetect(){
+	var accel_X=0.0;
+    var accel_Y=0.0;
+    var accel_Z=0.0;
 	window.addEventListener('devicemotion', function(event) {
-        var accel_X = event.acceleration.x;
-        var accel_Y = event.acceleration.y;
-        var accel_Z = event.acceleration.z;
+       accel_X = event.acceleration.x;
+       accel_Y = event.acceleration.y;
+       accel_Z = event.acceleration.z;
        this.x=accel_X;
 	   this.y=accel_Y;
 	   this.z=accel_Z;
-	   
+	   //serverClient.updateAcceleration(accel_X,accel_Y,accel_Z);
+	  
       /* if(Math.abs(accel_X.toFixed(2))>20)
        {console.log(accel_Z.toFixed(2)+' m/s^2');
 			if(Math.abs(accel_Y.toFixed(2))>20)
@@ -54,11 +58,13 @@ function AccelerationDetect(){
 	   {
 			if(Math.abs(accel_X.toFixed(2))>10&&Math.abs(accel_Y.toFixed(2))>10&&Math.abs(accel_Z.toFixed(2))>10)
 			{	console.log(Math.abs(accel_X.toFixed(2))+Math.abs(accel_Y.toFixed(2))+Math.abs(accel_Z.toFixed(2))+' 7777');
-				
+				group.updateSelfStatus('accident');
 			}
 	   }
 	   
     });
+	serverClient.updateAcceleration(this.x,this.y,this.z);
+	console.log('x: '+this.x+' y: '+this.y+' z: '+this.z);
 }
 
 /**
@@ -67,7 +73,7 @@ function AccelerationDetect(){
 AccerlationMonitor.prototype.startMonitor = function(){
     //TODO: Implement Me
     
-    window.setInterval(AccelerationDetect, 1000);
+    device_acc=window.setInterval(AccelerationDetect, 1000);
 
 };
 
@@ -76,7 +82,7 @@ AccerlationMonitor.prototype.startMonitor = function(){
 */
 AccerlationMonitor.prototype.stopMonitor = function(){
     //TODO: Implement Me
-    
+    window.clearInterval(device_acc);
 };
 
 

@@ -99,7 +99,8 @@ gulp.task('serve', ['styles', 'scripts', 'fonts'], () => {
       routes: {
         '/bower_components': 'bower_components'
       }
-    }
+    },
+    https:true
   });
 
   gulp.watch([

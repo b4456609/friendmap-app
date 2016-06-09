@@ -20,7 +20,15 @@ Group.prototype.acceptGroup = function(){
     //TODO: Implement Me
 
 };
-
+Group.prototype.updateSelfStatus = function (status) {
+  // console.log(users);
+  for (var i in this.members) {
+    if (this.members[i].id === user.id) {
+      this.members[i].updateUserStatus(status);
+      break;
+    }
+  }
+}
 function Member(){
     //Constructor
 
@@ -40,7 +48,7 @@ function Member(){
 
 Member.prototype.updateUserStatus = function(){
     //TODO: Implement Me
-	var a;
+	
 };
 
 
