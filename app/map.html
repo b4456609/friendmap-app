@@ -13,14 +13,14 @@
 <form>
   <a href="javascript:void(0)" onclick=" memberTest()">addMembers </a><br>
   <a href="javascript:void(0)" onclick=" map.drawAllMembers()">drawAllMember </a><br>
-  <a href="javascript:void(0)" onclick=" group.testResetPosition(0,group.members[0].location.lon,group.members[0].location.lat+0.001)">up </a><br>
-  <a href="javascript:void(0)" onclick=" group.testResetPosition(0,group.members[0].location.lon,group.members[0].location.lat-0.001)">down </a><br>
-  <a href="javascript:void(0)" onclick=" group.testResetPosition(0,group.members[0].location.lon-0.001,group.members[0].location.lat)">left </a><br>
-  <a href="javascript:void(0)" onclick=" group.testResetPosition(0,group.members[0].location.lon+0.001,group.members[0].location.lat)">right </a><br>
+  <a href="javascript:void(0)" onclick=" group.testResetPosition(0,group.members[0].location.lon,group.members[0].location.lat+0.001,0)">up </a><br>
+  <a href="javascript:void(0)" onclick=" group.testResetPosition(0,group.members[0].location.lon,group.members[0].location.lat-0.001,0)">down </a><br>
+  <a href="javascript:void(0)" onclick=" group.testResetPosition(0,group.members[0].location.lon-0.001,group.members[0].location.lat,0)">left </a><br>
+  <a href="javascript:void(0)" onclick=" group.testResetPosition(0,group.members[0].location.lon+0.001,group.members[0].location.lat,0)">right </a><br>
 
-  <a href="javascript:void(0)" onclick=" group.testResetStatus(0,'happy')">happy </a><br>
-  <a href="javascript:void(0)" onclick=" group.testResetStatus(0,'warning')">warning </a><br>
-  <a href="javascript:void(0)" onclick=" group.testResetStatus(0,'gg')">gg </a><br>
+  <a href="javascript:void(0)" onclick=" group.testResetStatus(0,'happy',0)">happy </a><br>
+  <a href="javascript:void(0)" onclick=" group.testResetStatus(0,'warning',0)">warning </a><br>
+  <a href="javascript:void(0)" onclick=" group.testResetStatus(0,'gg',0)">gg </a><br>
 </form>
 
 </div>

@@ -57,13 +57,25 @@ Group.prototype.acceptGroup = function () {
 }
 
 //-----------------------------------------------------------------------------
-Group.prototype.testResetPosition = function (memberID, lon, lat) {
-  this.members[memberID].setUserLocation(lon, lat, 1);
+Group.prototype.testResetPosition = function (memberID, lon, lat,timestamp) {
+  for(var x = 0; x<this.members.length; x++){
+    if(this.members[x].id == memberID){
+      //this.members[x].setUserLocation(lon, lat, timestamp);
+      break;
+    }
+  }
+  this.members[memberID].setUserLocation(lon, lat, timestamp);
   map.drawAllMembers();
 };
 
-Group.prototype.testResetStatus = function (memberID, status) {
-    this.members[memberID].setUserStatus(status, 1);
+Group.prototype.testResetStatus = function (memberID, status,timestamp) {
+  for (var x = 0; x < this.members.length; x++) {
+    if (this.members[x].id == memberID) {
+      //this.members[x].setUserStatus(status, timestamp);
+      break;
+    }
+  }
+  this.members[memberID].setUserStatus(status, timestamp);
   map.drawAllMembers();
 };
 
