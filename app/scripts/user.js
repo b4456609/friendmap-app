@@ -27,6 +27,19 @@ User.prototype.login = function () {
   this.checkFBStatus();
 }
 
+User.prototype.checkLogin = function () {
+  if (localStorage.getItem("id") === null) {
+    console.log('user not login');
+    myApp.loginScreen();
+  }
+  else {
+    user.id = localStorage.getItem("id");
+    user.name = localStorage.getItem("name");
+    setSidebarName();
+    serverClient.addUser(user.name, user.id);
+  }
+}
+
 var user = new User();
 
 

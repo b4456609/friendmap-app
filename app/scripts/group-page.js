@@ -40,17 +40,20 @@ myApp.onPageInit('group', function (page) {
     }
   });
   updateMemberList();
-  $$('#leave-group').on('click',leaveGroup);
+  $$('#leave-group').on('click', leaveGroup);
+  $$('#group-page-name').html(group.name);
 });
 
 var searchResult = [];
 
 function onAddPeopleSuccess(name) {
-  myApp.addNotification({
-    hold: 2000,
-    title: '加入成功',
-    message: name + ' 成為新的成員'
-  });
+  if (name !== user.name) {
+    myApp.addNotification({
+      hold: 2000,
+      title: '加入成功',
+      message: name + ' 成為新的成員'
+    });
+  }
   updateMemberList();
 }
 
@@ -76,5 +79,6 @@ function onAddPeopleFail() {
 function leaveGroup() {
   myApp.confirm('確定要離開群組嗎?', function () {
     serverClient.leaveGroup(user.id, group.id);
+    mainView.router.loadPage('index.html');
   });
 }

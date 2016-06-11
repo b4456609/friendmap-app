@@ -1,3 +1,6 @@
+//初始畫server連線
+// serverClient.init();
+
 // Initialize app and store it to myApp variable for futher access to its methods
 var myApp = new Framework7({
   modalTitle: 'FriendMap',
@@ -9,28 +12,12 @@ var myApp = new Framework7({
   },
   onAjaxComplete: function (xhr) {
     myApp.hideIndicator();
-  },
-  onPageBeforeInit: function (app, page) {
-    console.log('init onPageInit', user);
-  },
-  onPageInit: function (app, page) {
-    //設定sidebar使用者的名稱
-    document.getElementById('user-name').innerHTML = user.name;
   }
 });
 
 //使用者登入
 window.onload = function () {
-  // if (localStorage.getItem("id") === null) {
-  //   console.log('user not login');
-  //   myApp.loginScreen();
-  // }
-  // else {
-  //   user.id = localStorage.getItem("id");
-  //   user.name = localStorage.getItem("name");
-  //   setSidebarName();
-  //   serverClient.addUser(user.name, user.id);
-  // }
+  // user.checkLogin();
 }
 
 function setSidebarName() {
@@ -38,8 +25,6 @@ function setSidebarName() {
   document.getElementById('user-name').innerHTML = user.name;
 }
 
-//初始畫server連線
-// serverClient.init();
 
 // We need to use custom DOM library, let's save it to $$ variable:
 var $$ = Dom7;

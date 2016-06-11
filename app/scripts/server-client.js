@@ -48,8 +48,25 @@ function onMessage(evt) {
       searchResult = data.search;
       break;
     case 'addUser2Group':
-      group.setMember(data.user);
-      if(data.status == 'success'){
+      if (data.status == 'success') {
+        group.setMember(data.user);
+      }
+      break;
+    case 'loginResponse':
+      if (data.status == 'success') {
+        if (Object.keys(data.group).length > 0) {
+          group.id = data.group.id;
+          group.name = data.group.name;
+          var member = [];
+          for(var i in data.group.member){
+            var m = data.group.member[i];
+            member.push(new Member(m.id, m.name));
+          }
+          group.setMember(member);
+        }
+      }
+      else {
+        console.log('登入失敗');
       }
       break;
     default:
