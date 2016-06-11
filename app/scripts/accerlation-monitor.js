@@ -16,13 +16,21 @@ function AccelerationDetect(){
 	var accel_X=0.0;
     var accel_Y=0.0;
     var accel_Z=0.0;
+	if(typeof(this.x) == "undefined"&&typeof(this.y) == "undefined"&&typeof(this.z) == "undefined")
+	{
+			this.x=0;
+			this.y=0;
+			this.z=0;
+	}
 	window.addEventListener('devicemotion', function(event) {
        accel_X = event.acceleration.x;
        accel_Y = event.acceleration.y;
        accel_Z = event.acceleration.z;
+	   
        this.x=accel_X;
 	   this.y=accel_Y;
 	   this.z=accel_Z;
+	   
 	   //serverClient.updateAcceleration(accel_X,accel_Y,accel_Z);
 	  
       /* if(Math.abs(accel_X.toFixed(2))>20)
