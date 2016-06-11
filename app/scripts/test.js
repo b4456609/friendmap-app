@@ -30,8 +30,8 @@ function memberTest(){
   var members = [];
   var timestamp = new Date().getTime();
 
-  var member1 = new Member(timestamp+1+'', "rdrrmew");
-  member1.setUserLocation(121.779872,25.150964,timestamp)
+  var member1 = new Member(timestamp+1+'', "sadfff");
+  member1.setUserLocation(121.779826,25.150979,timestamp)
   member1.setUserStatus("happy",timestamp);
   members.push(member1);
 

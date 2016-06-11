@@ -89,7 +89,7 @@ function Member(id, name) {
     timestamp: null
   };
   this.location = {
-    lon: null,
+    lon: 0,
     lat: null,
     timestamp: null
   };
@@ -101,14 +101,18 @@ function Member(id, name) {
       "coordinates": [0, 0]
     },
     "properties": {
+      "title": name,
+      "description": "("+this.location.lon+","+ this.location.lat+")",
+      "image": "http://graph.facebook.com/" + id + "/picture",
       "icon": {
-        "iconUrl": "images/happy.png",
-        "iconSize": [50, 50], // size of the icon
-        "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
-        "popupAnchor": [0, -25], // point from which the popup should open relative to the iconAnchor
-        "className": "dot"
-      }
+           "iconUrl": "images/happy.png",
+           "iconSize": [50, 75], // size of the icon
+           "iconAnchor": [15, 25], // point of the icon which will correspond to marker's location
+           "popupAnchor": [0, -25], // point from which the popup should open relative to the iconAnchor
+           "className": "dot"      
+       }
     }
+
   }
 
 }
@@ -118,8 +122,8 @@ Member.prototype.setUserLocation = function (longitude, latitude, time) {
   this.location.lon = longitude;
   this.location.lat = latitude;
   this.location.timestamp = time;
-  this.marker.geometry.coordinates = [longitude,latitude];
-
+  this.marker.geometry.coordinates = [longitude, latitude];
+  this.marker.properties.description = "( "+this.location.lon+" , "+ this.location.lat+" )";
 }
 
 

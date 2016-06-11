@@ -34,6 +34,9 @@ Map.prototype.drawAllMembers = function (){
     var marker = e.layer,
       feature = marker.feature;
     marker.setIcon(L.icon(feature.properties.icon));
+    var content = '<h2>' + feature.properties.title + '<\/h2>' + '<p>' + feature.properties.description + '<\/p>' + '<img src="' + feature.properties.image + '" alt="" style="width:60px;height:60px;">';
+    
+    marker.bindPopup(content);
   });
   this.myLayer.setGeoJSON(this.geojson);
 };
