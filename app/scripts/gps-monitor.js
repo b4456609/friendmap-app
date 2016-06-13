@@ -27,6 +27,7 @@ function successPosition(position) {
 	//this.timestamp=nowTime;
 	
 	serverClient.updateLocation(longitude,latitude,nowTime);
+	group.updateUserLocation(longitude,latitude,nowTime);
     //var img = new Image();
     //img.src = "https://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude + "&zoom=13&size=300x300&sensor=false";
     //output.appendChild(img);

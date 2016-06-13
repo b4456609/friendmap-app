@@ -66,7 +66,9 @@ function AccelerationDetect(){
 	   {
 			if(Math.abs(accel_X.toFixed(2))>10&&Math.abs(accel_Y.toFixed(2))>10&&Math.abs(accel_Z.toFixed(2))>10)
 			{	console.log(Math.abs(accel_X.toFixed(2))+Math.abs(accel_Y.toFixed(2))+Math.abs(accel_Z.toFixed(2))+' 7777');
-				group.updateSelfStatus('accident');
+				var nowTime = new Date();
+				console.log('time:'+nowTime);
+				group.updateSelfStatus('accident',nowTime);
 			}
 	   }
 	   
