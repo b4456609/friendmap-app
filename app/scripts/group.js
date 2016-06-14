@@ -42,15 +42,16 @@ Group.prototype.setMember = function (users) {
   this.memberCounter = this.members.length;
 }
 
-Group.prototype.updateSelfStatus = function (status) {
+Group.prototype.updateSelfStatus = function (status, nowTime) {
   // console.log(users);
   for (var i in this.members) {
     if (this.members[i].id === user.id) {
-      this.members[i].updateUserStatus(status);
+      this.members[i].setUserStatus(status, nowTime);
       break;
     }
   }
-}
+
+};
 
 Group.prototype.acceptGroup = function () {
   //TODO: Implement Me
@@ -71,6 +72,9 @@ Group.prototype.testResetStatus = function (memberID, status) {
   }
   map.updateUserStatus(memberID);
 };
+
+
+
 
 function Member(id, name) {
   //Constructor
@@ -94,7 +98,6 @@ Member.prototype.setUserLocation = function (longitude, latitude, time) {
   this.location.lat = latitude;
   this.location.timestamp = time;
 }
-
 
 Member.prototype.setUserStatus = function (statusID, time) {
   this.status.status = statusID;
