@@ -34,12 +34,8 @@ function memberTest() {
   members.push(member3);
 
 
-  // var member4 = new Member(timestamp+4+'', "kappa");
-  // member4.setUserLocation(121.779872,25.150964,timestamp)
-  // member4.setUserStatus("happy",timestamp);
-  // members.push(member4);
-
   console.log(members);
 
   group.setMember(members);
+
 }
