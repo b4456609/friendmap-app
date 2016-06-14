@@ -53,6 +53,15 @@ Group.prototype.updateSelfStatus = function (status, nowTime) {
 
 };
 
+Group.prototype.updateSelfLocation = function (longitude, latitude, nowTime) {
+  for (var i in this.members) {
+    if (this.members[i].id === user.id) {
+      this.members[i].setUserLocation(longitude, latitude, nowTime);
+      break;
+    }
+  }
+}
+
 Group.prototype.acceptGroup = function () {
   //TODO: Implement Me
 }
