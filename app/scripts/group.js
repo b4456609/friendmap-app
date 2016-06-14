@@ -92,7 +92,7 @@ function Member(id, name) {
   this.id = id;
   this.name = name;
   this.status = {
-    status: null,
+    status: 'happy',
     timestamp: null
   };
   this.location = {
