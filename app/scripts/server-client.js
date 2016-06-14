@@ -1,7 +1,7 @@
 function ServerClient() {
   //Constructor
   this.wobsocket = null;
-  this.url = "ws://localhost:8080/friendmap-server/test";
+  this.url = 'wss://localhost:8443/friendmap-server/test';
 }
 
 ServerClient.prototype.init = function (params) {
@@ -16,23 +16,24 @@ ServerClient.prototype.init = function (params) {
 
 ServerClient.prototype.doSend = function (message) {
   var str = JSON.stringify(message);
-  console.log("SENT: " + str);
+  console.log('SENT: ' , message);
   //開發功能是測試用
   // this.websocket.send(str);
 }
 
 function onOpen(evt) {
-  console.log("CONNECTED");
+  console.log('CONNECTED');
+  user.checkLogin();
 }
 
 function onClose(evt) {
-  console.log("DISCONNECTED");
+  console.log('DISCONNECTED');
   serverClient.wobsocket = new WebSocket(serverClient.url);
 }
 
 function onMessage(evt) {
-  console.log('RESPONSE: ' + evt.data);
   var data = JSON.parse(evt.data);
+  console.log('RESPONSE: ', data);
   switch (data.type) {
     case 'createGroupResult':
       if (data.status == 'success') {
@@ -49,7 +50,13 @@ function onMessage(evt) {
       break;
     case 'addUser2Group':
       if (data.status == 'success') {
-        group.setMember(data.user);
+        var member = [];
+        for (var i in data.user) {
+          var m = data.user[i];
+          member.push(new Member(m.id, m.name));
+        }
+        group.setMember(member);
+        gpsMonitor.startMonitor();
       }
       break;
     case 'loginResponse':
@@ -58,16 +65,20 @@ function onMessage(evt) {
           group.id = data.group.id;
           group.name = data.group.name;
           var member = [];
-          for(var i in data.group.member){
+          for (var i in data.group.member) {
             var m = data.group.member[i];
             member.push(new Member(m.id, m.name));
           }
           group.setMember(member);
+          gpsMonitor.startMonitor();
         }
       }
       else {
         console.log('登入失敗');
       }
+      break;
+    case 'updateLocation':
+      group.updateMemberLocation(data.userId, data.lon, data.lat, data.timestamp);
       break;
     default:
       console.log('ServerClient not match message type');
@@ -80,68 +91,68 @@ function onError(evt) {
 
 ServerClient.prototype.addUser = function (name, id) {
   this.doSend({
-    "type": "addUser",
-    "name": name,
-    "id": id
+    'type': 'addUser',
+    'name': name,
+    'id': id
   });
 }
 
 ServerClient.prototype.createGroup = function (name, id) {
   this.doSend({
-    "type": "createGroup",
-    "name": name,
-    "userId": user.id,
-    "id": id
+    'type': 'createGroup',
+    'name': name,
+    'userId': user.id,
+    'id': id
   });
 }
 
 ServerClient.prototype.searchPeople = function () {
   this.doSend({
-    "type": "searchPeople"
+    'type': 'searchPeople'
   });
 }
 
 ServerClient.prototype.addUser2Group = function (userId, groupId) {
   this.doSend({
-    "type": "addUser2Group",
-    "userId": userId,
-    "groupId": groupId
+    'type': 'addUser2Group',
+    'userId': userId,
+    'groupId': groupId
   });
 }
 
 ServerClient.prototype.leaveGroup = function (userId, groupId) {
   this.doSend({
-    "type": "leaveGroup",
-    "userId": userId,
-    "groupId": groupId
+    'type': 'leaveGroup',
+    'userId': userId,
+    'groupId': groupId
   });
 }
 
 ServerClient.prototype.updateLocation = function (lon, lat, timestamp) {
   this.doSend({
-    "type": "updateLocation",
-    "userId": user.id,
-    "lon": lon,
-    "lat": lat,
-    "timestamp": timestamp
+    'type': 'updateLocation',
+    'userId': user.id,
+    'lon': lon,
+    'lat': lat,
+    'timestamp': timestamp
   });
 }
 
 ServerClient.prototype.updateAcceleration = function (x, y, z) {
   this.doSend({
-    "type": "updateAcceleration",
-    "userId": user.id,
-    "x": x,
-    "y": y,
-    "z": z
+    'type': 'updateAcceleration',
+    'userId': user.id,
+    'x': x,
+    'y': y,
+    'z': z
   });
 }
 
 ServerClient.prototype.updateStatus = function (status) {
   this.doSend({
-    "type": "updateStatus",
-    "userId": user.id,
-    "status": status
+    'type': 'updateStatus',
+    'userId': user.id,
+    'status': status
   });
 }
 

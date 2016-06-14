@@ -18,6 +18,7 @@ Group.prototype.isValidGroup = function () {
 Group.prototype.createGroup = function (name) {
   this.id = new Date().getTime();
   this.name = name;
+  gpsMonitor.startMonitor();
 };
 
 Group.prototype.addSelf = function () {
@@ -50,8 +51,19 @@ Group.prototype.updateSelfStatus = function (status, nowTime) {
       break;
     }
   }
-
+  updateMapInMapPage();
 };
+
+Group.prototype.updateMemberLocation = function (userId, longitude, latitude, nowTime) {
+  console.log(userId, longitude, latitude, nowTime);
+  for (var i in this.members) {
+    if (this.members[i].id === userId) {
+      this.members[i].setUserLocation(longitude, latitude, nowTime);
+      break;
+    }
+  }
+  updateMapInMapPage();
+}
 
 Group.prototype.updateSelfLocation = function (longitude, latitude, nowTime) {
   for (var i in this.members) {
@@ -60,10 +72,7 @@ Group.prototype.updateSelfLocation = function (longitude, latitude, nowTime) {
       break;
     }
   }
-}
-
-Group.prototype.acceptGroup = function () {
-  //TODO: Implement Me
+  updateMapInMapPage();
 }
 
 //-----------------------------------------------------------------------------
@@ -108,21 +117,21 @@ function Member(id, name) {
   };
 
   this.marker = {
-    "type": "Feature",
-    "geometry": {
-      "type": "Point",
-      "coordinates": [0, 0]
+    'type': 'Feature',
+    'geometry': {
+      'type': 'Point',
+      'coordinates': [0, 0]
     },
-    "properties": {
-      "title": name,
-      "description": "("+this.location.lon+","+ this.location.lat+")",
-      "image": "http://graph.facebook.com/" + id + "/picture",
-      "icon": {
-           "iconUrl": "images/happy.png",
-           "iconSize": [50, 75], // size of the icon
-           "iconAnchor": [15, 25], // point of the icon which will correspond to marker's location
-           "popupAnchor": [0, -25], // point from which the popup should open relative to the iconAnchor
-           "className": "dot"
+    'properties': {
+      'title': name,
+      'description': '('+this.location.lon+','+ this.location.lat+')',
+      'image': 'http://graph.facebook.com/' + id + '/picture',
+      'icon': {
+           'iconUrl': 'images/happy.png',
+           'iconSize': [50, 75], // size of the icon
+           'iconAnchor': [15, 25], // point of the icon which will correspond to marker's location
+           'popupAnchor': [0, -25], // point from which the popup should open relative to the iconAnchor
+           'className': 'dot'
        }
     }
 
@@ -136,13 +145,13 @@ Member.prototype.setUserLocation = function (longitude, latitude, time) {
   this.location.lat = latitude;
   this.location.timestamp = time;
   this.marker.geometry.coordinates = [longitude, latitude];
-  this.marker.properties.description = "( "+this.location.lon+" , "+ this.location.lat+" )";
+  this.marker.properties.description = '( '+this.location.lon+' , '+ this.location.lat+' )';
 }
 
 Member.prototype.setUserStatus = function (status, time) {
   this.status.status = status;
   this.status.timestamp = time;
-  this.marker.properties.icon.iconUrl = "images/" + status + ".png";
+  this.marker.properties.icon.iconUrl = 'images/' + status + '.png';
 
 };
 

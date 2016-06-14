@@ -20,8 +20,8 @@ Map.prototype.initmap = function () {
 
 //更新所有成員在地圖上的位置
 
-Map.prototype.drawAllMembers = function (){
-  
+Map.prototype.drawAllMembers = function () {
+
   this.map.removeLayer(this.myLayer);
   this.myLayer = L.mapbox.featureLayer().addTo(this.map);
   this.geojson = [];
@@ -35,7 +35,7 @@ Map.prototype.drawAllMembers = function (){
       feature = marker.feature;
     marker.setIcon(L.icon(feature.properties.icon));
     var content = '<h2>' + feature.properties.title + '<\/h2>' + '<p>' + feature.properties.description + '<\/p>' + '<img src="' + feature.properties.image + '" alt="" style="width:60px;height:60px;">';
-    
+
     marker.bindPopup(content);
   });
   this.myLayer.setGeoJSON(this.geojson);

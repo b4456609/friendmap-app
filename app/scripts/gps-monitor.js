@@ -8,7 +8,7 @@ function GPSMonitor() {
   this.timestamp = null;
   this.lat = null;
   this.lon = null;
-
+  this.gpsInterval = null;
 }
 
 
@@ -22,7 +22,7 @@ function successPosition(position) {
   console.log('Latitude is ' + latitude + ' Longitude is ' + longitude);
   //this.lat=latitude;
   //this.lon=longitude;
-  var nowTime = new Date();
+  var nowTime = new Date().getTime();
   console.log('time:' + nowTime);
   //this.timestamp=nowTime;
 
@@ -38,13 +38,22 @@ function errorPosition() {
   console.log('Unable to retrieve your location');
 };
 
-
-GPSMonitor.prototype.startMonitor = function () {
+GPSMonitor.prototype.getGPS = function () {
   if (!navigator.geolocation) {
     console.log('Geolocation is not supported by your browser');
   }
   //console.log('you are right');
   navigator.geolocation.getCurrentPosition(successPosition, errorPosition);
+}
+
+
+GPSMonitor.prototype.startMonitor = function () {
+  this.gpsInterval = window.setInterval(this.getGPS, 1000);
 };
+
+GPSMonitor.prototype.stopMonitor = function () {
+  window.clearInterval(this.gpsInterval);
+};
+
 
 var gpsMonitor = new GPSMonitor();

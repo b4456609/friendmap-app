@@ -28,13 +28,13 @@ User.prototype.login = function () {
 }
 
 User.prototype.checkLogin = function () {
-  if (localStorage.getItem("id") === null) {
+  if (localStorage.getItem('id') === null) {
     console.log('user not login');
     myApp.loginScreen();
   }
   else {
-    user.id = localStorage.getItem("id");
-    user.name = localStorage.getItem("name");
+    user.id = localStorage.getItem('id');
+    user.name = localStorage.getItem('name');
     setSidebarName();
     serverClient.addUser(user.name, user.id);
   }
