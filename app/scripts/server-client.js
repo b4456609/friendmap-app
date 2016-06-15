@@ -85,6 +85,9 @@ function onMessage(evt) {
     case 'updateStatus':
       group.updateMemberStatus(data.userId, data.status, data.timestamp);
       break;
+    case 'userLeaveGroup':
+      group.userLeaveGroup(data.userId);
+      break;
     default:
       console.log('ServerClient not match message type');
   }

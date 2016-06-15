@@ -91,10 +91,20 @@ Group.prototype.getSelfStatus = function () {
   }
 };
 
+
+Group.prototype.userLeaveGroup = function (userId) {
+  console.log(this.members);
+  for (var i in this.members) {
+    if (this.members[i].id === userId) {
+      this.members.splice(i, 1);
+    }
+  }
+  console.log(this.members);
+};
 //-----------------------------------------------------------------------------
-Group.prototype.testResetPosition = function (memberID, lon, lat,timestamp) {
-  for(var x = 0; x<this.members.length; x++){
-    if(this.members[x].id == memberID){
+Group.prototype.testResetPosition = function (memberID, lon, lat, timestamp) {
+  for (var x = 0; x < this.members.length; x++) {
+    if (this.members[x].id == memberID) {
       //this.members[x].setUserLocation(lon, lat, timestamp);
       break;
     }
@@ -103,7 +113,7 @@ Group.prototype.testResetPosition = function (memberID, lon, lat,timestamp) {
   map.drawAllMembers();
 };
 
-Group.prototype.testResetStatus = function (memberID, status,timestamp) {
+Group.prototype.testResetStatus = function (memberID, status, timestamp) {
   for (var x = 0; x < this.members.length; x++) {
     if (this.members[x].id == memberID) {
       //this.members[x].setUserStatus(status, timestamp);
@@ -140,15 +150,15 @@ function Member(id, name) {
     },
     'properties': {
       'title': name,
-      'description': '('+this.location.lon+','+ this.location.lat+')',
+      'description': '(' + this.location.lon + ',' + this.location.lat + ')',
       'image': 'http://graph.facebook.com/' + id + '/picture',
       'icon': {
-           'iconUrl': 'images/happy.png',
-           'iconSize': [50, 75], // size of the icon
-           'iconAnchor': [15, 25], // point of the icon which will correspond to marker's location
-           'popupAnchor': [0, -25], // point from which the popup should open relative to the iconAnchor
-           'className': 'dot'
-       }
+        'iconUrl': 'images/happy.png',
+        'iconSize': [50, 75], // size of the icon
+        'iconAnchor': [15, 25], // point of the icon which will correspond to marker's location
+        'popupAnchor': [0, -25], // point from which the popup should open relative to the iconAnchor
+        'className': 'dot'
+      }
     }
 
   }
@@ -161,7 +171,7 @@ Member.prototype.setUserLocation = function (longitude, latitude, time) {
   this.location.lat = latitude;
   this.location.timestamp = time;
   this.marker.geometry.coordinates = [longitude, latitude];
-  this.marker.properties.description = '( '+this.location.lon+' , '+ this.location.lat+' )';
+  this.marker.properties.description = '( ' + this.location.lon + ' , ' + this.location.lat + ' )';
 }
 
 Member.prototype.setUserStatus = function (status, time) {
