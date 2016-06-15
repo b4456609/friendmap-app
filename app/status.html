@@ -16,17 +16,17 @@
             <!-- Additional "smart-select" class -->
             <a href="#" class="item-link smart-select">
               <!-- select -->
-              <select name="更改狀態">
-          <option value="happy" selected>開心</option>
-          <option value="warning">緊急</option>
-          <option value="gg">GG</option>
-        </select>
+              <select name="更改狀態" onchange="updateStatus();">
+                <option value="happy">開心</option>
+                <option value="warning">緊急</option>
+                <option value="gg">GG</option>
+              </select>
               <div class="item-content">
                 <div class="item-inner">
                   <!-- Select label -->
                   <div class="item-title">我的狀態</div>
                   <!-- Selected value, not required -->
-                  <div class="item-after" id="sel">開心</div>
+                  <!--<div class="item-after" id="sel">開心</div>-->
                 </div>
               </div>
             </a>

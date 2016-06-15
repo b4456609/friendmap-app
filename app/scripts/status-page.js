@@ -1,19 +1,31 @@
 myApp.onPageInit('status', function (page) {
-  // document.getElementsByClassName('item-after').value
-  console.log('status onPageInit', $$('#sel').text())
+  console.log(group.getSelfStatus());
+  if (group.getSelfStatus() !== undefined) {
+    $$('select')[0].selectedIndex = valueToStatusIndex(group.getSelfStatus());
+    $$('.item-after').html(group.getSelfStatus());
+  }
 });
 
-myApp.onPageBeforeRemove('status', function (page) {
-  // document.getElementsByClassName('item-after').value
-  console.log('status onPageBack', $$('#sel').text())
-  group.updateSelfStatus(statusToValue($$('#sel').text()));
-});
+function valueToStatusIndex(val) {
+  if (val === 'happy')
+    return 0;
+  if (val === 'warning')
+    return 1;
+  if (val === 'gg')
+    return 2;
+}
 
-function statusToValue(val){
-  if(val === '開心')
-    return 'happy';
-  if(val === '緊急')
-    return 'warning';
-  if(val === 'GG')
-    return 'gg';
+function statusIndexToValue(val) {
+  if (val === 0)
+    return '開心';
+  if (val === 1)
+    return '緊急';
+  if (val === 2)
+    return 'GG';
+}
+
+function updateStatus() {
+  var status = statusIndexToValue($$('select')[0].selectedIndex);
+  console.log(status);
+  group.updateSelfStatus(status, new Date().getTime());
 }

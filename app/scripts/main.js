@@ -1,5 +1,5 @@
 //初始畫server連線
-// serverClient.init();
+serverClient.init();
 
 // Initialize app and store it to myApp variable for futher access to its methods
 var myApp = new Framework7({
@@ -17,7 +17,7 @@ var myApp = new Framework7({
 
 //使用者登入
 window.onload = function () {
-  // user.checkLogin();
+  user.checkLogin();
 }
 
 function setSidebarName() {

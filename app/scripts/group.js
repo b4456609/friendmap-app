@@ -44,14 +44,13 @@ Group.prototype.setMember = function (users) {
 }
 
 Group.prototype.updateSelfStatus = function (status, nowTime) {
-  // console.log(users);
   for (var i in this.members) {
     if (this.members[i].id === user.id) {
       this.members[i].setUserStatus(status, nowTime);
       break;
     }
   }
-  updateMapInMapPage();
+  serverClient.updateStatus(status, nowTime);
 };
 
 Group.prototype.updateMemberLocation = function (userId, longitude, latitude, nowTime) {
@@ -74,6 +73,14 @@ Group.prototype.updateSelfLocation = function (longitude, latitude, nowTime) {
   }
   updateMapInMapPage();
 }
+
+Group.prototype.getSelfStatus = function () {
+  for (var i in this.members) {
+    if (this.members[i].id === user.id) {
+      return this.members[i].status.status;
+    }
+  }
+};
 
 //-----------------------------------------------------------------------------
 Group.prototype.testResetPosition = function (memberID, lon, lat,timestamp) {

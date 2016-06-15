@@ -1,7 +1,7 @@
 function ServerClient() {
   //Constructor
   this.wobsocket = null;
-  this.url = 'wss://localhost:8443/friendmap-server/test';
+  this.url = 'wss://a05cb7d9.ngrok.io/friendmap-server/test';
 }
 
 ServerClient.prototype.init = function (params) {
@@ -18,7 +18,7 @@ ServerClient.prototype.doSend = function (message) {
   var str = JSON.stringify(message);
   console.log('SENT: ' , message);
   //開發功能是測試用
-  // this.websocket.send(str);
+  this.websocket.send(str);
 }
 
 function onOpen(evt) {
@@ -148,11 +148,12 @@ ServerClient.prototype.updateAcceleration = function (x, y, z) {
   });
 }
 
-ServerClient.prototype.updateStatus = function (status) {
+ServerClient.prototype.updateStatus = function (status, timestamp) {
   this.doSend({
     'type': 'updateStatus',
     'userId': user.id,
-    'status': status
+    'status': status,
+    'timestamp': timestamp
   });
 }
 
