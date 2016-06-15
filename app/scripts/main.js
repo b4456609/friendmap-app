@@ -15,11 +15,6 @@ var myApp = new Framework7({
   }
 });
 
-//使用者登入
-window.onload = function () {
-  user.checkLogin();
-}
-
 function setSidebarName() {
   //設定sidebar使用者的名稱
   document.getElementById('user-name').innerHTML = user.name;
