@@ -84,3 +84,14 @@ function leaveGroup() {
     mainView.router.loadPage('index.html');
   });
 }
+
+function onMemberLeave(name) {
+  if (name !== user.name) {
+    myApp.addNotification({
+      hold: 2000,
+      title: '離開群組',
+      message: name + ' 離開群組'
+    });
+  }
+  updateMemberList();
+}

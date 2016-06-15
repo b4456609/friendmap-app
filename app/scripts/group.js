@@ -92,14 +92,13 @@ Group.prototype.getSelfStatus = function () {
 };
 
 
-Group.prototype.userLeaveGroup = function (userId) {
-  console.log(this.members);
+Group.prototype.userLeaveGroup = function (userId, userName) {
   for (var i in this.members) {
     if (this.members[i].id === userId) {
       this.members.splice(i, 1);
     }
   }
-  console.log(this.members);
+  onMemberLeave(userName);
 };
 //-----------------------------------------------------------------------------
 Group.prototype.testResetPosition = function (memberID, lon, lat, timestamp) {
