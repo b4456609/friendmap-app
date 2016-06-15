@@ -1,8 +1,9 @@
 myApp.onPageInit('status', function (page) {
-  console.log(group.getSelfStatus());
-  if (group.getSelfStatus() !== undefined) {
-    $$('select')[0].selectedIndex = valueToStatusIndex(group.getSelfStatus());
-    $$('.item-after').html(group.getSelfStatus());
+  var status = group.getSelfStatus();
+  console.log(status);
+  if (status !== undefined) {
+    $$('select')[0].selectedIndex = valueToStatusIndex(status);
+    $$('.item-after').html(valueToStatusName(status));
   }
 });
 
@@ -15,13 +16,22 @@ function valueToStatusIndex(val) {
     return 2;
 }
 
+function valueToStatusName(val) {
+  if (val === 'happy')
+    return '開心';
+  if (val === 'warning')
+    return '緊急';
+  if (val === 'gg')
+    return 'GG';
+}
+
 function statusIndexToValue(val) {
   if (val === 0)
-    return '開心';
+    return 'happy';
   if (val === 1)
-    return '緊急';
+    return 'warning';
   if (val === 2)
-    return 'GG';
+    return 'gg';
 }
 
 function updateStatus() {

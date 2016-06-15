@@ -54,10 +54,19 @@ Group.prototype.updateSelfStatus = function (status, nowTime) {
 };
 
 Group.prototype.updateMemberLocation = function (userId, longitude, latitude, nowTime) {
-  console.log(userId, longitude, latitude, nowTime);
   for (var i in this.members) {
     if (this.members[i].id === userId) {
       this.members[i].setUserLocation(longitude, latitude, nowTime);
+      break;
+    }
+  }
+  updateMapInMapPage();
+}
+
+Group.prototype.updateMemberStatus = function (userId, status, nowTime) {
+  for (var i in this.members) {
+    if (this.members[i].id === userId) {
+      this.members[i].setUserStatus(status, nowTime);
       break;
     }
   }

@@ -80,6 +80,9 @@ function onMessage(evt) {
     case 'updateLocation':
       group.updateMemberLocation(data.userId, data.lon, data.lat, data.timestamp);
       break;
+    case 'updateStatus':
+      group.updateMemberStatus(data.userId, data.status, data.timestamp);
+      break;
     default:
       console.log('ServerClient not match message type');
   }
