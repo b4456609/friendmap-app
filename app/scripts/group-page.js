@@ -79,6 +79,8 @@ function onAddPeopleFail() {
 function leaveGroup() {
   myApp.confirm('確定要離開群組嗎?', function () {
     serverClient.leaveGroup(user.id, group.id);
+    gpsMonitor.stopMonitor();
+    group = new Group();
     mainView.router.loadPage('index.html');
   });
 }

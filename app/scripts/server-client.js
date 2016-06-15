@@ -50,6 +50,8 @@ function onMessage(evt) {
       break;
     case 'addUser2Group':
       if (data.status == 'success') {
+        group.id = data.groupId;
+        group.name = data.groupName;
         var member = [];
         for (var i in data.user) {
           var m = data.user[i];
