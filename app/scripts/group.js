@@ -19,6 +19,7 @@ Group.prototype.createGroup = function (name) {
   this.id = new Date().getTime();
   this.name = name;
   gpsMonitor.startMonitor();
+  acc.startMonitor();
 };
 
 Group.prototype.addSelf = function () {

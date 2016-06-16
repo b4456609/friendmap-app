@@ -48,7 +48,7 @@ GPSMonitor.prototype.getGPS = function () {
 
 
 GPSMonitor.prototype.startMonitor = function () {
-  this.gpsInterval = window.setInterval(this.getGPS, 3000);
+  this.gpsInterval = window.setInterval(this.getGPS, 5000);
 };
 
 GPSMonitor.prototype.stopMonitor = function () {
