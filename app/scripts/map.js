@@ -10,12 +10,25 @@ function Map() {
   this.geojson = [];
   this.myLayer = null;
 
+  this.directions = L.mapbox.directions();
+  this.directionsLayer = L.mapbox.directions.layer(this.directions);
+  this.directionsInputControl = L.mapbox.directions.inputControl('inputs', this.directions);
+  this.directionsErrorsControl = L.mapbox.directions.errorsControl('errors', this.directions);
+  this.directionsRoutesControl = L.mapbox.directions.routesControl('routes', this.directions);
+  
 }
 
 // 初始畫地圖
 Map.prototype.initmap = function () {
   this.map = L.mapbox.map('map', 'mapbox.streets', { center: [25.150911, 121.780102], zoom: 16 });
   this.myLayer = L.mapbox.featureLayer().addTo(this.map);
+
+  this.directionsLayer.addTo(this.map);
+  this.directionsInputControl.addTo(this.map);
+  this.directionsErrorsControl.addTo(this.map);
+  this.directionsRoutesControl.addTo(this.map);
+  this.map.attributionControl.setPosition('bottomleft');
+
 };
 
 //更新所有成員在地圖上的位置
