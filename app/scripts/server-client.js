@@ -1,9 +1,10 @@
 function ServerClient() {
   //Constructor
   this.wobsocket = null;
-  this.url = 'wss://44770ff6.ngrok.io/friendmap-server/test';
+  // this.url = 'wss://44770ff6.ngrok.io/friendmap-server/test';
   // this.url = 'wss://localhost:8443/friendmap-server/test';
-  // this.url = 'wss://140.121.101.163:9443/friendmap-server/test';
+  this.url = 'wss://140.121.101.163:9443/friendmap-server/test';
+  // this.url = 'ws://localhost:8080/friendmap-server/test';
 }
 
 ServerClient.prototype.init = function (params) {
@@ -25,6 +26,11 @@ ServerClient.prototype.doSend = function (message) {
 
 function onOpen(evt) {
   console.log('CONNECTED');
+  myApp.addNotification({
+    hold: 1000,
+    title: 'Friendmap',
+    message: '成功連線'
+  });
   user.checkLogin();
 }
 

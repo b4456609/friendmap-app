@@ -155,7 +155,7 @@ function Member(id, name) {
       'icon': {
         'iconUrl': 'images/happy.png',
         'iconSize': [50, 75], // size of the icon
-        'iconAnchor': [15, 25], // point of the icon which will correspond to marker's location
+        'iconAnchor': [25, 75], // point of the icon which will correspond to marker's location
         'popupAnchor': [0, -25], // point from which the popup should open relative to the iconAnchor
         'className': 'dot'
       }
